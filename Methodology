@@ -7,7 +7,7 @@ label : genuine -> convert this to label '1'
 
 We have used LabelEncoder technique for this conversion.
 
-<b>Results Obtained:<b>
+<b>Results Obtained:</b>
 
     precision    recall  f1-score   support
 
