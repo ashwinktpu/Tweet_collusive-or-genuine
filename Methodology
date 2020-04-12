@@ -1,1 +1,27 @@
+NLP is the subset of Machine Learning in which we work on text and documents.It consists of different models like bigram,trigram or n-gram models.
+In this project we have used the concept of NLP and some preprocessing steps like stopwords removal or stemming.
+In this project the tweets are labelled as "collusive" or "genuine".To work on this further we need to some conversion:
 
+label : collusive -> convert this to label '0'
+label : genuine -> convert this to label '1'
+
+We have used LabelEncoder technique for this conversion.
+
+<b>Results Obtained:<b>
+
+    precision    recall  f1-score   support
+
+           0       0.74      0.79      0.77       929
+           1       0.81      0.76      0.78      1072
+           2       0.00      0.00      0.00         0
+
+    accuracy                           0.78      2001
+   macro avg       0.52      0.52      0.52      2001
+weighted avg       0.78      0.78      0.78      2001
+
+[[738 191   0]
+ [258 813   1]
+ [  0   0   0]]
+0.775112443778111
+
+So here accuracy of this project is 77.5% with our simple pipeline model.
