@@ -16,11 +16,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix, classification_report,accuracy_score
 
-
+#change the path of csv file here , note that fullData is a dataframe
 fullData = pd.read_csv("C:/Users/ashwina/Desktop/tweets.csv")
 fullData.head()
 
-
+#import labelencoder to convert the categorical data into numerical form
 from sklearn import preprocessing
 number = preprocessing.LabelEncoder() 
 
@@ -28,8 +28,7 @@ number = preprocessing.LabelEncoder()
 fullData["label"] = number.fit_transform(fullData["label"].astype('str'))
 fullData.head()
 
-
-
+#function to remove punctuations
 import nltk
 nltk.download('punkt')
 def form_sentence(tweet):
@@ -39,7 +38,7 @@ def form_sentence(tweet):
 #print(form_sentence(fullData['tweet_text'].iloc[10]))
 #print(fullData['tweet_text'].iloc[10])
 
-
+#function to remove stopwords
 import nltk
 nltk.download('stopwords')
 def no_user_alpha(tweet):
@@ -52,6 +51,7 @@ def no_user_alpha(tweet):
 #print(fullData['tweet_text'].iloc[10])
 
 
+#function to do lemmitization step to get the root word out of several words (e.g. the root word of plays, playing is play)
 import nltk
 nltk.download('wordnet')
 def normalization(tweet_list):
@@ -62,9 +62,8 @@ def normalization(tweet_list):
             normalized_tweet.append(normalized_text)
         return normalized_tweet
 
-#tweet_list = 'I was playing with my friends with whom I used to play, when you called me yesterday'.split()
-#print(normalization(tweet_list))
-
+    
+#vectorization and model selection
 from sklearn.feature_extraction.text import CountVectorizer
 pipeline = Pipeline([
     ('bow',CountVectorizer(analyzer='word')),  # strings to token integer counts
@@ -72,7 +71,7 @@ pipeline = Pipeline([
     ('classifier', MultinomialNB()),  # train on TF-IDF vectors w/ Naive Bayes classifier
 ])
 
-
+#Getting results  by spliiting the complete data set into 80% training data and 20% test data
 msg_train, msg_test, label_train, label_test = train_test_split(fullData['tweet_text'], fullData['label'], test_size=0.20)
 pipeline.fit(msg_train,label_train)
 predictions = pipeline.predict(msg_test)
