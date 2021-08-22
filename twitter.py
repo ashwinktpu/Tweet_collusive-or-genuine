@@ -1,3 +1,15 @@
+  """
+    Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+   
+   Please read LICENSE for more information.
+   
+   """
+
+
 #Data Analysis
 import pandas as pd
 import matplotlib.pyplot as plt
